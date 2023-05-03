@@ -1,0 +1,68 @@
+responsive.css：
+/* 在此处添加响应式样式，使页面在不同设备和屏幕尺寸上正常显示 */
+@media screen and (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .schedule {
+        padding: 4%;
+    }
+
+    .schedule h2 {
+        font-size: 8vw;
+    }
+
+    .bottom-section {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cube-container {
+        margin-right: 0;
+        margin-top: 5%;
+    }
+
+    .video-container {
+        margin-top: 5%;
+    }
+
+    #video-toggle {
+        font-size: 3vw;
+    }
+}
+mian.js:
+document.addEventListener('DOMContentLoaded', () => {
+    const video = document.getElementById('wedding-video');
+    const toggleButton = document.getElementById('video-toggle');
+
+    toggleButton.addEventListener('click', () => {
+        if (video.paused) {
+            video.play();
+            video.muted = false;
+        } else {
+            video.pause();
+            video.muted = true;
+        }
+    });
+});
+sakura.js:
+(function () {
+    function createSakura() {
+        const sakura = document.createElement('span');
+        sakura.classList.add('sakura');
+        const size = Math.random() * 12 + 8;
+        sakura.style.width = size + 'px';
+        sakura.style.height = size + 'px';
+        sakura.style.left = Math.random() * 100 + 'vw';
+        sakura.style.animationDuration = Math.random() * 4 + 4 + 's';
+        sakura.style.animationDelay = Math.random() * 2 + 's';
+        document.body.appendChild(sakura);
+
+        setTimeout(() => {
+            sakura.remove();
+        }, 8000);
+    }
+
+    setInterval(createSakura, 100);
+})();
